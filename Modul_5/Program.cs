@@ -1,9 +1,9 @@
 ﻿using System;
 class Programm
 {
-    static string ShowColor(string username)
+    static string ShowColor(string username, int userage)
     {
-        Console.WriteLine($"{username} напишите свой любимый цвет на английском с маленькой буквы");
+        Console.WriteLine($"{username}, {userage} лет - напишите свой любимый цвет на английском с маленькой буквы");
         var color = Console.ReadLine();
 
         switch (color)
@@ -69,7 +69,7 @@ class Programm
 
         for (int i = 0; i < favcolors.Length; i++)
         {
-            favcolors[i] = ShowColor(anketa.name);
+            favcolors[i] = ShowColor(anketa.name, anketa.age);
         }
 
 
