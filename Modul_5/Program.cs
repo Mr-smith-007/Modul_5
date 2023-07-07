@@ -1,5 +1,5 @@
 ﻿using System;
-class MainClass
+class Programm
 {
     static void ShowColor()
     {
