@@ -73,6 +73,12 @@ class Programm
         }
     }
 
+    static void ChangeName(ref string name)
+    {
+        Console.WriteLine("Введите имя");
+        name = Console.ReadLine();
+
+    }
 
     public static void Main(string[] args)
     {
@@ -110,8 +116,14 @@ class Programm
 
 
 
-        int[] array = GetArrayFromConsole(10);
-        ShowArray(array, true);
+        string somename = "Алексей";
+        ChangeName(ref somename);
+        Console.WriteLine(somename);
+
+
+
+        //int[] array = GetArrayFromConsole(10);
+        //ShowArray(array, true);
 
         //int[] sortedarray = SortArray(array);
         //foreach (int x in sortedarray)
