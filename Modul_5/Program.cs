@@ -110,7 +110,7 @@ class Programm
 
 
 
-        int[] array = GetArrayFromConsole();
+        int[] array = GetArrayFromConsole(10);
         ShowArray(array, true);
 
         //int[] sortedarray = SortArray(array);
