@@ -37,10 +37,10 @@ class Programm
     //    return color;
     //}
 
-    static int[] GetArrayFromConsole()
+    static int[] GetArrayFromConsole(int num = 5)
     {
-        int[] array = new int[5];
-        Console.WriteLine("Введите элементы мвссива:");
+        int[] array = new int[num];
+        Console.WriteLine("Введите элементы массива:");
         for(int i = 0; i < array.Length; i++)
         {
             array[i] = int.Parse(Console.ReadLine());
