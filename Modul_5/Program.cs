@@ -104,13 +104,8 @@ class Programm
         //}
 
         int[] array = GetArrayFromConsole();
-        SortArray(array);
-        foreach (int x in array)
+        int[] sortedarray = SortArray(array);
+        foreach (int x in sortedarray)
             Console.Write(x + " ");
-
-
-
-
-
     }
 }
