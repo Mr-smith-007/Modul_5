@@ -1,36 +1,39 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
+using System.Reflection;
+
 class Programm
 {
-    static string ShowColor(string username, int userage)
-    {
-        Console.WriteLine($"{username}, {userage} лет \nНапишите свой любимый цвет на английском с маленькой буквы");
-        var color = Console.ReadLine();
+    //static string ShowColor(string username, int userage)
+    //{
+    //    Console.WriteLine($"{username}, {userage} лет \nНапишите свой любимый цвет на английском с маленькой буквы");
+    //    var color = Console.ReadLine();
 
-        switch (color)
-        {
-            case "red":
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("Your color is red!");
-                break;
-            case "green":
-                Console.BackgroundColor = ConsoleColor.Green;
-                Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("Your color is green!");
-                break;
-            case "cyan":
-                Console.BackgroundColor = ConsoleColor.Cyan;
-                Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine("Your color is cyan!");
-                break;
-            default:
-                Console.BackgroundColor = ConsoleColor.Yellow;
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Your color is yellow!");
-                break;
-        }
-        return color;
-    }
+    //    switch (color)
+    //    {
+    //        case "red":
+    //            Console.BackgroundColor = ConsoleColor.Red;
+    //            Console.ForegroundColor = ConsoleColor.Black;
+    //            Console.WriteLine("Your color is red!");
+    //            break;
+    //        case "green":
+    //            Console.BackgroundColor = ConsoleColor.Green;
+    //            Console.ForegroundColor = ConsoleColor.Black;
+    //            Console.WriteLine("Your color is green!");
+    //            break;
+    //        case "cyan":
+    //            Console.BackgroundColor = ConsoleColor.Cyan;
+    //            Console.ForegroundColor = ConsoleColor.Black;
+    //            Console.WriteLine("Your color is cyan!");
+    //            break;
+    //        default:
+    //            Console.BackgroundColor = ConsoleColor.Yellow;
+    //            Console.ForegroundColor = ConsoleColor.Red;
+    //            Console.WriteLine("Your color is yellow!");
+    //            break;
+    //    }
+    //    return color;
+    //}
 
     static int[] GetArrayFromConsole(int num = 5)
     {
@@ -43,42 +46,75 @@ class Programm
         return array;
     }
 
-    static int[] SortArray(int[] array)
+    static void SortArray(in int[] array, out int[] sorteddesc, out int[] sortedasc)
     {
+        sorteddesc = SortArrayDesc(in array);
+        sortedasc = SortArrayAsc(in array);
+    }
+
+
+    static int[] SortArrayDesc(in int[] array)
+    {
+        int[] array1 = new int[array.Length];
+        Array.Copy(array, 0, array1, 0, array.Length);
         int t;
-        for (int i = 0; i < array.Length; i++)
+        for (int i = 0; i < array1.Length; i++)
         {
-            for (int j = i + 1; j < array.Length; j++)
+            for (int j = i + 1; j < array1.Length; j++)
             {
-                if (array[i] > array[j])
+                if ((array1[i] < array1[j]))
                 {
-                    t = array[j];
-                    array[j] = array[i];
-                    array[i] = t;
+                    t = array1[i];
+                    array1[i] = array1[j];
+                    array1[j] = t;
                 }
             }
         }
-        return array;
+        return array1;
     }
 
-    static void ShowArray(int[] array, bool sort = false)
+
+
+    static int[] SortArrayAsc(in int[] array)
     {
-        if (sort)
+        int[] array2 = new int[array.Length];
+        Array.Copy(array, 0, array2, 0, array.Length);
+        int t;
+        for (int i = 0; i < array2.Length; i++)
         {
-            SortArray(array);
+            for (int j = i + 1; j < array2.Length; j++)
+            {
+                if (array2[i] > array2[j])
+                {
+                    t = array2[i];
+                    array2[i] = array2[j];
+                    array2[j] = t;
+                }
+            }
         }
-        foreach (int x in array)
-        {
-            Console.Write(x + " ");
-        }
+        return array2;
     }
 
-    static void ChangeName(ref string name)
-    {
-        Console.WriteLine("Введите имя");
-        name = Console.ReadLine();
 
-    }
+
+    //static void ShowArray(int[] array, bool sort = false)
+    //{
+    //    if (sort)
+    //    {
+    //        SortArray(array);
+    //    }
+    //    foreach (int x in array)
+    //    {
+    //        Console.Write(x + " ");
+    //    }
+    //}
+
+    //static void ChangeName(ref string name)
+    //{
+    //    Console.WriteLine("Введите имя");
+    //    name = Console.ReadLine();
+
+    //}
 
     public static void Main(string[] args)
     {
@@ -116,13 +152,15 @@ class Programm
 
 
 
-        string somename = "Алексей";
-        ChangeName(ref somename);
-        Console.WriteLine(somename);
+        //string somename = "Алексей";
+        //ChangeName(ref somename);
+        //Console.WriteLine(somename);
 
 
 
-        //int[] array = GetArrayFromConsole(10);
+        int[] array = GetArrayFromConsole(10);
+        SortArray(in array, out var sorteddesc, out var sortedask);
+
         //ShowArray(array, true);
 
         //int[] sortedarray = SortArray(array);
