@@ -116,6 +116,22 @@ class Programm
 
     //}
 
+
+    static void Echo(string phrase, int deep)
+    {
+        var modif = phrase;
+        if (modif.Length > 2)
+        {
+            modif = modif.Remove(0, 2);
+        }
+        Console.WriteLine("... " + modif);
+        if (deep > 1)
+        {
+            Echo(modif, deep - 1);
+        }
+    }
+
+
     public static void Main(string[] args)
     {
         //var (name, age) = ("Евгения", 27);
@@ -158,8 +174,8 @@ class Programm
 
 
 
-        int[] array = GetArrayFromConsole(10);
-        SortArray(in array, out var sorteddesc, out var sortedask);
+        //int[] array = GetArrayFromConsole(10);
+        //SortArray(in array, out var sorteddesc, out var sortedask);
 
         //ShowArray(array, true);
 
@@ -168,8 +184,13 @@ class Programm
         //    Console.Write(x + " ");
 
 
-
-
-
+        Console.WriteLine("Напишите что-то");
+        var str = Console.ReadLine();
+        Console.WriteLine("Укажите глубину эха");
+        var deep = int.Parse(Console.ReadLine());
+        Echo(str, deep);
+        Console.ReadKey();
     }
+
+
 }
